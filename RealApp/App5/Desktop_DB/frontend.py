@@ -2,18 +2,23 @@ from tkinter import *
 import backend
 
 def get_selected_row(event):
-    global selected_tupple
-    index = list1.curselection()
-    selected_tupple = list1.get(index)
+    try:
+        global selected_tupple
+        index = list1.curselection()[0]
+        selected_tupple = list1.get(index)
 
-    e1.delete(0, END)
-    e1.insert(END, selected_tupple[1])
-    e2.delete(0, END)
-    e2.insert(END, selected_tupple[2])
-    e3.delete(0, END)
-    e3.insert(END, selected_tupple[3])
-    e4.delete(0, END)
-    e4.insert(END, selected_tupple[4])
+        e1.delete(0, END)
+        e1.insert(END, selected_tupple[1])
+        e2.delete(0, END)
+        e2.insert(END, selected_tupple[2])
+        e3.delete(0, END)
+        e3.insert(END, selected_tupple[3])
+        e4.delete(0, END)
+        e4.insert(END, selected_tupple[4])
+    except IndexError:
+        pass
+
+    
 
 def view_command():
     list1.delete(0, END)
